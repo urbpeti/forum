@@ -7,15 +7,23 @@
       <p>This forum is all about community. Be kind! Be helpful! 🌈</p>
       <p>Animal farm! 🦔🐎🐶🦔🐎🐶🦔🐎🐶🦔🐎🐶🦔🐎🐶</p>
       <p class="lead">
-        <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+        <a class="btn btn-primary btn-lg" :href="getLoginURL" role="button">Login with Google</a>
       </p>
     </div>
   </div>
 </template>
 
 <script>
-
 export default {
-  name: 'home',
+  name: "home",
+  computed: {
+    getLoginURL() {
+      if (window.location.hostname === "localhost") {
+        return "http://localhost:3000/auth/google";
+      } else {
+        return "https://community-forum-api2.now.sh/auth/google";
+      }
+    }
+  }
 };
 </script>
