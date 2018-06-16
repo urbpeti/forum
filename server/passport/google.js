@@ -22,7 +22,6 @@ passport.use(new GoogleStrategy({
     display_name: profile.displayName,
     email,
     google_id: profile.id,
-    banned: false,
     image_url: profile.photos[0].value,
     role_id: 1,
   }
@@ -34,6 +33,10 @@ passport.use(new GoogleStrategy({
       googleUser.role_id = user.role_id;
       user = await users.update(user.id, googleUser);
     } else {
+      const admins = await users.findAdmins();
+      if (admins.length === 0) {
+        googleUser.role_id = 3;
+      }
       user = await users.insert(googleUser);
     }
 

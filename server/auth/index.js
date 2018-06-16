@@ -1,11 +1,9 @@
 const express = require('express');
 const passport = require('passport');
-
+require('../passport/google.js');
 const { create } = require('./utils');
 
 const router = express.Router();
-
-require('../passport/google.js');
 
 router.get('/google',
   passport.authenticate('google', {

@@ -1,5 +1,7 @@
 const jwt = require('jsonwebtoken');
 
+const users = require('../queries/users');
+
 function create(user) {
   return new Promise((resolve, reject) => {
     jwt.sign(user, process.env.TOKEN_SECRET, { expiresIn: '1d' }, (err, token) => {

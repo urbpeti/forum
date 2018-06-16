@@ -16,6 +16,9 @@ const schema = Joi.object().keys({
 
 
 module.exports = {
+  findAdmins() {
+    return db('users').where('role_id', 3);
+  },
   findByEmail(email) {
     return db('users').where('email', email).first();
   },
@@ -25,11 +28,13 @@ module.exports = {
     return rows[0];
   },
 
-  insert(user) {
+  async insert(user) {
     const result = Joi.validate(user, schema);
-    if (result.error == null)
-      return db('users').insert(user);
-    else
+    if (result.error === null) {
+      const rows = await db('users').insert(user, '*');
+      return rows[0];
+    } else {
       return Promise.reject(result.error);
+    }
   }
 };
