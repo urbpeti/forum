@@ -5,6 +5,7 @@
       <p class="lead">A fully open source forum. Made with 💚</p>
       <hr class="my-4">
       <p>This forum is all about community. Be kind! Be helpful! 🌈</p>
+      <p>Animal farm! 🦔🐎🐶🦔🐎🐶🦔🐎🐶🦔🐎🐶🦔🐎🐶</p>
       <p class="lead">
         <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
       </p>
